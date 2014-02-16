@@ -1,0 +1,22 @@
+.background_box {
+	position: absolute;
+	width: 72%;
+	height: 100%;
+	left: 14%
+}
+
+.box_registrierung {
+	position: absolute;
+	width: 800px;
+	height: 750px;
+	left: 5%;
+	top: 15%
+}
+
+.login_form {
+	position: absolute;
+	width: 1000px;
+	height: 10px;
+	left: 48%;
+	top: 15%
+}

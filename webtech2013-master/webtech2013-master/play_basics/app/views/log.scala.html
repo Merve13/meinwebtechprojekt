@@ -1,0 +1,143 @@
+@(message: String)
+<html>
+<head>
+<title>Mitfahrgelegenheit-Anmeldung</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap -->
+<link href="/assets/stylesheets/bootstrap.css" rel="stylesheet"
+	media="screen">
+<link href="/assets/stylesheets/bilder.css" rel="stylesheet"
+	media="screen">
+
+<style type="text/css">
+body {
+	padding-top: 50px;
+}
+
+h1 {
+	font-family: Brush Script, fantasy;
+	font-size: 350%;
+	color: white;
+	text-align: center;
+}
+
+.haha {
+	font-family: Brush Script, fantasy;
+	font-size: 150%;
+	color: white;
+	text-align: center;
+}
+
+.lala {
+	font-family: Vivaldi, fantasy;
+	font-size: 250%;
+	color: white;
+	text-align: center;
+}
+
+table {
+	background-color: #e6efff;
+	filter: alpha(opacity = 80);
+	opacity: 0.8;
+	-khtml-opacity: 0.8;
+}
+
+h9 {
+	font-family: Brush Script, fantasy;
+	font-size: 100%;
+	color: black;
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+
+	<div class="container">
+		<div class="starter-template">
+			<h1>Mitfahrgelegenheit</h1>
+			<div class="haha">Fahren Sie mit uns!</div>
+
+
+			@if(message) {
+			<div class="lala">@message</div>
+
+			} <br> <br>
+
+
+			<table border="1" width=35% height=300 align="center">
+
+				<div class="row">
+					<tr border="0">
+
+						<form class="form-horizontal" role="form" method="POST"
+							action="/loginmfg/loggen">
+							<div class="form-group">
+								<td align="center" for="inputEmail1"
+									class="col-lg-2 control-label"><h9>Email</h9><br>
+
+									<div class="col-lg-4">
+										<input name="email" type="email" class="form-control"
+											id="email" placeholder="Email">
+									</div>
+							</div>
+							</td>
+					</tr>
+					<tr>
+
+						<div class="form-group">
+							<td for="inputEmail1" align="center"
+								class="col-lg-2 control-label"><h9>Password</h9><br>
+
+								<div class="col-lg-4">
+									<input name="password" type="password" class="form-control"
+										id="password" placeholder="Password">
+								</div>
+						</div>
+
+						</td>
+
+					</tr>
+
+					<tr>
+
+
+
+						<p>
+						<div class="Registrierung">
+							<div class="col-lg-offset-0 col-lg-0">
+
+
+
+								<td align="center">
+									<button type="submit" class="btn btn-default">
+										<h9>Login</h9>
+									</button> <br> <br>
+									</form>
+
+									<form class="form-horizontal" role="form" method="POST"
+										action="/loginmfg/reg">
+
+										<button type="submit" class="btn btn-default">
+											<h9>Registrieren</h9>
+										</button>
+								</td>
+							</div>
+
+
+						</div>
+				</div>
+				</form>
+			</table>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../javascripts/jquery.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../javascripts/bootstrap.js"></script>
+</body>

@@ -1,0 +1,71 @@
+@(fahrertyp : String)(message: String)(mfgs: List[Mfg]) @import tags._
+@import scala.collection.JavaConversions._
+<!DOCTYPE html>
+<html>
+<head>
+<title>Startseite</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+
+<link href="/assets/stylesheets/bilder2.css" rel="stylesheet"
+	media="screen">
+
+<link href="/assets/stylesheets/bootstrap.css" rel="stylesheet"
+	media="screen">
+
+<meta charset="ISO-8859-1">
+
+<style type="text/css">
+body {
+	padding-top: 50px;
+}
+
+h2 {
+	color: white;
+}
+</style>
+</head>
+<body>
+
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+
+				<a class="navbar-brand" href="#">Mitfahrgelegenheit</a>
+
+			</div>
+
+			<ul class="nav nav-pills">
+
+				<li class="active"><a href="#">Meine Mitfahrgelegenheit</a></li>
+				<li><a href="/MFGanbieten/verlinken">MFG-Anbieten</a></li>
+				<li><a href="/MFGanbieten/verlinkenauffahrerodermitfahrer">ZURÜCK</a></li>
+				<li><a href="/loginmfg/logout">Logout</a></li>
+
+			</ul>
+
+
+
+		</div>
+	</div>
+	<div class="alert alert-info">
+		<b>@fahrertyp @message </b>
+	</div>
+
+
+	<br>
+	<div class="row">@tabelle(mfgs)</div>
+
+
+	<br>
+	<br>
+
+
+</body>
+</html>

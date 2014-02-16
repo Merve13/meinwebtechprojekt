@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>MFG-Anbieten</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=0.5">
+<meta charset="utf-8">
+
+<link href="/assets/stylesheets/bilder2.css" rel="stylesheet"
+	media="screen">
+<link href="/assets/stylesheets/bootstrap.css" rel="stylesheet"
+	media="screen">
+
+
+<link href="/assets/stylesheets/own.css" rel="stylesheet" media="screen">
+
+
+<meta charset="ISO-8859-1">
+
+<style type="text/css">
+body {
+	padding-top: 50px;
+}
+
+table {
+	background-color: #e6efff;
+	filter: alpha(opacity = 80);
+	opacity: 0.8;
+	-khtml-opacity: 0.8;
+}
+
+.option {
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 15px;
+	line-height: 1.428571429;
+	color: #555555;
+	vertical-align: middle;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out .15s, box-shadow
+		ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+h1 {
+	color: #6495ed;
+	font-family: sans-serif, Calibri;
+	font-size: 250%;
+}
+
+.position {
+	position: absolute;
+	left: 30px;
+	top: 150px;
+}
+
+h2 {
+	color: #6495ed;
+	font-family: Bradley Hand, fantasy;
+	font-size: 150%;
+}
+
+#map-canvas {
+	height: 800px;
+	width: 850px;
+	position: absolute;
+	left: 450px;
+	top: 170px;
+}
+</style>
+<script
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCrAtOD7lJ4XWaVbVMARJD66bPDoTtLXok&sensor=false"></script>
+<script>
+	var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
+	var map;
+
+	function initialize() {
+		directionsDisplay = new google.maps.DirectionsRenderer();
+		var Konstanz = new google.maps.LatLng(47.66, 9.16);
+		var mapOptions = {
+			zoom : 14,
+			center : Konstanz
+		}
+		map = new google.maps.Map(document.getElementById("map-canvas"),
+				mapOptions);
+		directionsDisplay.setMap(map);
+	}
+
+	function calcRoute() {
+		var start = document.getElementById("start").value;
+		var end = document.getElementById("ziel").value;
+		var request = {
+			origin : start,
+			destination : end,
+			travelMode : google.maps.TravelMode.DRIVING
+		};
+		directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);
+			}
+		});
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+
+				<a class="navbar-brand" href="#">Biete An!</a>
+
+
+			</div>
+
+
+			<div class="collapse navbar-collapse">
+
+				<ul class="nav nav-pills">
+					<li><a href="/MFGanbieten/verlinken1">Meine
+							Mitfahrgelegenheiten</a></li>
+					<li class="active"><a href="#">MFG-Anbieten</a></li>
+
+					<li><a href="/MFGanbieten/verlinken1">ZURÜCK</a></li>
+					<li><a href="/loginmfg/logout">Logout</a></li>
+
+
+				</ul>
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<form class="form-horizontal" role="form" method="POST"
+		action="/MFGanbieten/speichern">
+
+
+		<table width=50% height=60 align="center">
+			<td align="center">
+				<h1>Neue Mitfahrgelegenheit anbieten!</h1>
+			</td>
+		</table>
+		<div id="map-canvas"></div>
+		<br> <br> <br>
+		<div class="position">
+			<b>Start: </b> <select id="start" style="width: 250px;"
+				placeholder="Start" name="start" class="form-control"
+				onchange="calcRoute();">
+				<option value="">Wo wollen Sie starten?</option>
+				<option value="Aachen">Aachen</option>
+				<option value="Aalen">Aalen</option>
+				<option value="Augsburg">Augsburg</option>
+				<option value="Berlin">Berlin</option>
+				<option value="Baden-Baden">Baden-Baden</option>
+				<option value="Böblingen">Böblingen</option>
+				<option value="Biberach">Biberach</option>
+				<option value="Bielefeld ">Bielefeld</option>
+				<option value="Bonn">Bonn</option>
+				<option value="Bochum">Bochum</option>
+				<option value="Calw">Calw</option>
+				<option value="DÃ¼sseldorf">Düsseldorf</option>
+				<option value="Dresden">Dresden</option>
+				<option value="Dortmund">Dortmund</option>
+				<option value="Donaueschingen">Donaueschingen</option>
+				<option value="Duisburg">Duisburg</option>
+				<option value="Essen">Essen</option>
+				<option value="Erfurt">Erfurt</option>
+				<option value="Erlangen">Erlangen</option>
+				<option value="Frankfurt">Frankfurt</option>
+				<option value="Freiburg">Freiburg</option>
+				<option value="Schwäbisch Gmünd">Schwäbisch Gmünd</option>
+				<option value="Göppingen">Göppingen</option>
+				<option value="Göttingen">Göttingen</option>
+				<option value="Hannover">Hannover</option>
+				<option value="Heilbronn">Heilbronn</option>
+				<option value="Horb">Horb</option>
+				<option value="Köln">Köln</option>
+				<option value="Karlsruhe">Karlsruhe</option>
+				<option value="Konstanz">Konstanz</option>
+				<option value="Koblenz">Koblenz</option>
+				<option value="Leipzig">Leipzig</option>
+				<option value="München">München</option>
+				<option value="Mannheim">Mannheim</option>
+				<option value="Nürnberg">Nürnberg</option>
+				<option value="Neu-Ulm">Neu-Ulm</option>
+				<option value="Passau">Passau</option>
+				<option value="Rotenburg">Rotenburg</option>
+				<option value="Rostock">Rostock</option>
+				<option value="Reutlingen">Reutlingen</option>
+				<option value="Rottweil">Rottweil</option>
+				<option value="Ravensburg">Ravensburg</option>
+				<option value="Stuttgart">Stuttgart</option>
+				<option value="Sigmaringen">Sigmaringen</option>
+				<option value="Singen">Singen</option>
+				<option value="Stockach">Stockach</option>
+				<option value="Tuttlingen">Tuttlingen</option>
+				<option value="Tübingen">Tübingen</option>
+				<option value="Ulm">Ulm</option>
+			</select>
+			<table>
+				<td
+					style="height: 800px; width: 500px; position: absolute; top: 300px; left: 500px;"></td>
+			</table>
+			<br> <br> <b>Ziel:</b> <select style="width: 250px;"
+				class="form-control" placeholder="Ziel" name="ziel" id="ziel"
+				onchange="calcRoute();">
+				<option value="">Wohin wollen Sie fahren?</option>
+				<option value="Aachen">Aachen</option>
+				<option value="Aalen">Aalen</option>
+				<option value="Augsburg">Augsburg</option>
+				<option value="Berlin">Berlin</option>
+				<option value="Baden-Baden">Baden-Baden</option>
+				<option value="Böblingen">Böblingen</option>
+				<option value="Biberach">Biberach</option>
+				<option value="Bielefeld ">Bielefeld</option>
+				<option value="Bonn">Bonn</option>
+				<option value="Bochum">Bochum</option>
+				<option value="Calw">Calw</option>
+				<option value="DÃ¼sseldorf">Düsseldorf</option>
+				<option value="Dresden">Dresden</option>
+				<option value="Dortmund">Dortmund</option>
+				<option value="Donaueschingen">Donaueschingen</option>
+				<option value="Duisburg">Duisburg</option>
+				<option value="Essen">Essen</option>
+				<option value="Erfurt">Erfurt</option>
+				<option value="Erlangen">Erlangen</option>
+				<option value="Frankfurt">Frankfurt</option>
+				<option value="Freiburg">Freiburg</option>
+				<option value="Schwäbisch Gmünd">Schwäbisch Gmünd</option>
+				<option value="Göppingen">Göppingen</option>
+				<option value="Göttingen">Göttingen</option>
+				<option value="Hannover">Hannover</option>
+				<option value="Heilbronn">Heilbronn</option>
+				<option value="Horb">Horb</option>
+				<option value="Köln">Köln</option>
+				<option value="Karlsruhe">Karlsruhe</option>
+				<option value="Konstanz">Konstanz</option>
+				<option value="Koblenz">Koblenz</option>
+				<option value="Leipzig">Leipzig</option>
+				<option value="München">München</option>
+				<option value="Mannheim">Mannheim</option>
+				<option value="Nürnberg">Nürnberg</option>
+				<option value="Neu-Ulm">Neu-Ulm</option>
+				<option value="Passau">Passau</option>
+				<option value="Rotenburg">Rotenburg</option>
+				<option value="Rostock">Rostock</option>
+				<option value="Reutlingen">Reutlingen</option>
+				<option value="Rottweil">Rottweil</option>
+				<option value="Ravensburg">Ravensburg</option>
+				<option value="Stuttgart">Stuttgart</option>
+				<option value="Sigmaringen">Sigmaringen</option>
+				<option value="Singen">Singen</option>
+				<option value="Stockach">Stockach</option>
+				<option value="Tuttlingen">Tuttlingen</option>
+				<option value="Tübingen">Tübingen</option>
+				<option value="Ulm">Ulm</option>
+			</select> <br> <br> <b>Haltestelle: </b> <select id="haltestelle"
+				style="width: 250px;" placeholder="haltestelle" name="haltestelle"
+				class="form-control" onchange="calcRoute();">
+				<option value="">Wo wollen Sie halten?</option>
+				<option value="Aachen">Aachen</option>
+				<option value="Aalen">Aalen</option>
+				<option value="Augsburg">Augsburg</option>
+				<option value="Berlin">Berlin</option>
+				<option value="Baden-Baden">Baden-Baden</option>
+				<option value="Böblingen">Böblingen</option>
+				<option value="Biberach">Biberach</option>
+				<option value="Bielefeld ">Bielefeld</option>
+				<option value="Bonn">Bonn</option>
+				<option value="Bochum">Bochum</option>
+				<option value="Calw">Calw</option>
+				<option value="DÃ¼sseldorf">Düsseldorf</option>
+				<option value="Dresden">Dresden</option>
+				<option value="Dortmund">Dortmund</option>
+				<option value="Donaueschingen">Donaueschingen</option>
+				<option value="Duisburg">Duisburg</option>
+				<option value="Essen">Essen</option>
+				<option value="Erfurt">Erfurt</option>
+				<option value="Erlangen">Erlangen</option>
+				<option value="Frankfurt">Frankfurt</option>
+				<option value="Freiburg">Freiburg</option>
+				<option value="Schwäbisch Gmünd">Schwäbisch Gmünd</option>
+				<option value="Göppingen">Göppingen</option>
+				<option value="Göttingen">Göttingen</option>
+				<option value="Hannover">Hannover</option>
+				<option value="Heilbronn">Heilbronn</option>
+				<option value="Horb">Horb</option>
+				<option value="Köln">Köln</option>
+				<option value="Karlsruhe">Karlsruhe</option>
+				<option value="Konstanz">Konstanz</option>
+				<option value="Koblenz">Koblenz</option>
+				<option value="Leipzig">Leipzig</option>
+				<option value="München">München</option>
+				<option value="Mannheim">Mannheim</option>
+				<option value="Nürnberg">Nürnberg</option>
+				<option value="Neu-Ulm">Neu-Ulm</option>
+				<option value="Passau">Passau</option>
+				<option value="Rotenburg">Rotenburg</option>
+				<option value="Rostock">Rostock</option>
+				<option value="Reutlingen">Reutlingen</option>
+				<option value="Rottweil">Rottweil</option>
+				<option value="Ravensburg">Ravensburg</option>
+				<option value="Stuttgart">Stuttgart</option>
+				<option value="Sigmaringen">Sigmaringen</option>
+				<option value="Singen">Singen</option>
+				<option value="Stockach">Stockach</option>
+				<option value="Tuttlingen">Tuttlingen</option>
+				<option value="Tübingen">Tübingen</option>
+				<option value="Ulm">Ulm</option>
+			</select> <br> <br> <span class="input-group-addon"
+				style="width: 300px;"><p class="position_links">
+					<b>Fahrttag:</b>
+				</p> <select class="option" style="width: 80px;" name="Tag" size="1">
+					<option value='01'>01</option>
+					<option value='02'>02</option>
+					<option value='03'>03</option>
+					<option value='04'>04</option>
+					<option value='01'>05</option>
+					<option value='06'>06</option>
+					<option value='07'>07</option>
+					<option value='08'>08</option>
+					<option value='09'>09</option>
+					<option value='10'>10</option>
+					<option value='11'>11</option>
+					<option value='12'>12</option>
+					<option value='13'>13</option>
+					<option value='14'>14</option>
+					<option value='15'>15</option>
+					<option value='16'>16</option>
+					<option value='17'>17</option>
+					<option value='18'>18</option>
+					<option value='19'>19</option>
+					<option value='20'>20</option>
+					<option value='21'>21</option>
+					<option value='22'>22</option>
+					<option value='23'>23</option>
+					<option value='24'>24</option>
+					<option value='25'>25</option>
+					<option value='26'>26</option>
+					<option value='27'>27</option>
+					<option value='28'>28</option>
+					<option value='29'>29</option>
+					<option value='30'>30</option>
+					<option value='31'>31</option>
+			</select> <select class="option" style="width: 80px;" name="Monat" size="1">
+					<option value='01'>01</option>
+					<option value='02'>02</option>
+					<option value='03'>03</option>
+					<option value='04'>04</option>
+					<option value='01'>05</option>
+					<option value='06'>06</option>
+					<option value='07'>07</option>
+					<option value='08'>08</option>
+					<option value='09'>09</option>
+					<option value='10'>10</option>
+					<option value='11'>11</option>
+					<option value='12'>12</option>
+			</select> <select class="option" style="width: 100px;" name="Jahr" size="1">
+					<option value='2013'>2013</option>
+					<option value='2014'>2014</option>
+					<option value='2015'>2015</option>
+
+			</select><br> <br> <b>Uhrzeit:</b><br> <br> <select
+				class="option" id="Stunden" style="width: 80px;" name="Stunden"
+				size="1">
+					<option value='00'>00</option>
+					<option value='01'>01</option>
+					<option value='02'>02</option>
+					<option value='03'>03</option>
+					<option value='04'>04</option>
+					<option value='05'>05</option>
+					<option value='06'>06</option>
+					<option value='07'>07</option>
+					<option value='08'>08</option>
+					<option value='09'>09</option>
+					<option value='10'>10</option>
+					<option value='11'>11</option>
+					<option value='12'>12</option>
+					<option value='13'>13</option>
+					<option value='14'>14</option>
+					<option value='15'>15</option>
+					<option value='16'>16</option>
+					<option value='17'>17</option>
+					<option value='18'>18</option>
+					<option value='19'>19</option>
+					<option value='20'>20</option>
+					<option value='21'>21</option>
+					<option value='22'>22</option>
+					<option value='23'>23</option>
+					<option value='24'>24</option>
+			</select> <select class="option" id="Minuten" style="width: 80px;"
+				name="Minuten" size="1">
+					<option value='00'>00</option>
+					<option value='01'>01</option>
+					<option value='02'>02</option>
+					<option value='03'>03</option>
+					<option value='04'>04</option>
+					<option value='05'>05</option>
+					<option value='06'>06</option>
+					<option value='07'>07</option>
+					<option value='08'>08</option>
+					<option value='09'>09</option>
+					<option value='10'>10</option>
+					<option value='11'>11</option>
+					<option value='12'>12</option>
+					<option value='13'>13</option>
+					<option value='14'>14</option>
+					<option value='15'>15</option>
+					<option value='16'>16</option>
+					<option value='17'>17</option>
+					<option value='18'>18</option>
+					<option value='19'>19</option>
+					<option value='20'>20</option>
+					<option value='21'>21</option>
+					<option value='22'>22</option>
+					<option value='23'>23</option>
+					<option value='24'>24</option>
+					<option value='25'>25</option>
+					<option value='26'>26</option>
+					<option value='27'>27</option>
+					<option value='28'>28</option>
+					<option value='29'>29</option>
+					<option value='30'>30</option>
+					<option value='31'>31</option>
+					<option value='32'>33</option>
+					<option value='33'>34</option>
+					<option value='34'>35</option>
+					<option value='35'>36</option>
+					<option value='36'>37</option>
+					<option value='37'>38</option>
+					<option value='39'>39</option>
+					<option value='40'>40</option>
+					<option value='41'>41</option>
+					<option value='42'>42</option>
+					<option value='43'>43</option>
+					<option value='44'>44</option>
+					<option value='45'>45</option>
+					<option value='46'>46</option>
+					<option value='47'>47</option>
+					<option value='48'>48</option>
+					<option value='49'>49</option>
+					<option value='50'>50
+					<option>
+					<option value='51'>51</option>
+					<option value='52'>52</option>
+					<option value='53'>53</option>
+					<option value='54'>54</option>
+					<option value='55'>55</option>
+					<option value='56'>56</option>
+					<option value='57'>57</option>
+					<option value='58'>58</option>
+					<option value='59'>59</option>
+					<option value='60'>60</option>
+			</select> <select class="option" id="Sekunden" style="width: 100px;"
+				name="Sekunden" size="1">
+					<option value='00'>00</option>
+					<option value='01'>01</option>
+					<option value='02'>02</option>
+					<option value='03'>03</option>
+					<option value='04'>04</option>
+					<option value='05'>05</option>
+					<option value='06'>06</option>
+					<option value='07'>07</option>
+					<option value='08'>08</option>
+					<option value='09'>09</option>
+					<option value='10'>10</option>
+					<option value='11'>11</option>
+					<option value='12'>12</option>
+					<option value='13'>13</option>
+					<option value='14'>14</option>
+					<option value='15'>15</option>
+					<option value='16'>16</option>
+					<option value='17'>17</option>
+					<option value='18'>18</option>
+					<option value='19'>19</option>
+					<option value='20'>20</option>
+					<option value='21'>21</option>
+					<option value='22'>22</option>
+					<option value='23'>23</option>
+					<option value='24'>24</option>
+					<option value='25'>25</option>
+					<option value='26'>26</option>
+					<option value='27'>27</option>
+					<option value='28'>28</option>
+					<option value='29'>29</option>
+					<option value='30'>30</option>
+					<option value='31'>31</option>
+					<option value='32'>33</option>
+					<option value='33'>34</option>
+					<option value='34'>35</option>
+					<option value='35'>36</option>
+					<option value='36'>37</option>
+					<option value='37'>38</option>
+					<option value='39'>39</option>
+					<option value='40'>40</option>
+					<option value='41'>41</option>
+					<option value='42'>42</option>
+					<option value='43'>43</option>
+					<option value='44'>44</option>
+					<option value='45'>45</option>
+					<option value='46'>46</option>
+					<option value='47'>47</option>
+					<option value='48'>48</option>
+					<option value='49'>49</option>
+					<option value='50'>50
+					<option>
+					<option value='51'>51</option>
+					<option value='52'>52</option>
+					<option value='53'>53</option>
+					<option value='54'>54</option>
+					<option value='55'>55</option>
+					<option value='56'>56</option>
+					<option value='57'>57</option>
+					<option value='58'>58</option>
+					<option value='59'>59</option>
+					<option value='60'>60</option>
+			</select> </span> <br> <br> <b>Anzahl der Plätze</b> <input name="plaetze"
+				id="plaetze" style="width: 250px;" type="number"
+				class="form-control" id="inputplätze" placeholder="Plätze">
+			<br> <br>
+
+			<button type="submit" class="btn btn-primary">Mitfahrgelgenheit
+				anbieten</button>
+	</form>
+
+	</div>
+
+</body>
+
+</html>

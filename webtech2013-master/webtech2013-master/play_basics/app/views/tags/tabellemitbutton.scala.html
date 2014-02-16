@@ -1,0 +1,63 @@
+@(items: List[Mfg])
+
+
+<style type="text/css">
+h2 {
+	color: black;
+	font-size: 12;
+}
+</style>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+
+			<th><h2>
+					<b>Start</b>
+				</h2></th>
+			<th><h2>
+					<b>Ziel</b>
+				</h2></th>
+			<th><h2>
+					<b>Haltestelle</b>
+				</h2></th>
+			<th><h2>
+					<b>Platze</b>
+				</h2></th>
+			<th><h2>
+					<b>Datum</b>
+				</h2></th>
+			<th><h2>
+					<b>Uhrzeit</b>
+				</h2></th>
+			<th><h2></h2></th>
+
+
+			<form class="form-horizontal" role="form" method="GET"
+				action="/Suche/anfrage(i.mfgid)">
+		</tr>
+		</div>
+	</thead>
+	<tbody>
+		@for( i <- items ){
+
+		<tr>
+			<td></td>
+
+			<td><b>@i.start</b></td>
+			<td><b>@i.ziel</b></td>
+			<td><b>@i.haltestelle</b></td>
+			<td><b>@i.plaetze</b></td>
+			<td><b>@i.fahrttag</b></td>
+			<td><b>@i.uhrzeit</b></td>
+			<td><b><button type="submit" class="btn btn-default">Mitfahren</button></b></td>
+
+			</form>
+		</tr>
+		}
+	</tbody>
+</table>
+
+
+

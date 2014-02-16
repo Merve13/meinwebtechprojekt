@@ -1,0 +1,118 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+##################
+# Basic exmaples
+##################
+
+# Home page
+#GET     /                                controllers.ExampleController.index
+GET 	/								 controllers.loginmfg.index()
+
+
+
+# MFG Anbieten
+
+GET     /MFGanbieten/verlinken                          controllers.MFGanbieten.verlinken()
+GET     /MFGanbieten/verlinken1                         controllers.MFGanbieten.verlinken1()
+POST     /MFGanbieten/speichern                          controllers.MFGanbieten.speichern()
+POST     /MFGanbieten/verlinken                          controllers.MFGanbieten.verlinken()
+
+POST     /MFGanbieten/weitermitfahrer                          controllers.MFGanbieten.weitermitfahrer()
+POST     /MFGanbieten/weiterfahrer                          controllers.MFGanbieten.weiterfahrer()
+
+
+#mfganzeigen
+GET     /MFGanbieten/                  controllers.MFGanbieten.anzeigen()
+
+
+
+#verlinken auf fahrerodermifahrer seite
+
+GET     /MFGanbieten/verlinkenauffahrerodermitfahrer                  controllers.MFGanbieten.verlinkenauffahrerodermitfahrer()
+
+#kontakt
+GET     /MFGanbieten/kontakt                  controllers.MFGanbieten.kontakt()
+
+# Controller Beispiele
+GET     /example/output                  controllers.ExampleController.output
+GET     /example/counter                 controllers.ExampleController.cookiecounter
+GET     /example/simpletemplate          controllers.ExampleController.simpletemplate
+
+
+# Beispiel ShopLIst
+GET     /shoplist/                       controllers.ShopListController.list
+POST    /shoplist/                       controllers.ShopListController.addItem
+POST    /shoplist/:itemname/delete       controllers.ShopListController.deleteItem(itemname: String)
+
+
+
+
+# login
+GET      /loginmfg/index                          controllers.loginmfg.index()
+POST     /loginmfg/loggen                          controllers.loginmfg.loggen()
+POST     /loginmfg/reg                          controllers.loginmfg.reg()
+
+#logout
+GET      /loginmfg/logout                          controllers.loginmfg.logout()  
+
+#suchen
+GET      /Suche/:id                          controllers.Suche.anfrage(id: String)  
+
+
+
+
+# Genau hier ist es wonach du suchst. Hab dir mal ganze routes geschickt. Villeicht kann es dir später bei einen oder anderen Aufgaben helfen
+
+# Registrierung
+
+GET      /registrierung/                  controllers.Registrierung.registrieren()
+POST     /registrierung/abschicken                          controllers.Registrierung.abschicken()
+
+#GET     /userlogin                       controllers.UserLogin.index()
+#POST    /userlogin						 controllers.UserLogin.login()
+
+# Kontoeinstellungen
+
+#GET		/konto/index					 controllers.Konto.kontoeinstellungen_index()
+#POST	/konto/aendern					 controllers.Konto.kontoeinstellungen_aendern()
+#POST	/konto/entfernen				 controllers.Konto.kontoEntfernen()
+
+# MFG Details zeigen
+
+#POST	/anwendung/:id/mfg_details_zeigen controllers.Anwendung.detailsAnzeigen(id: String)	
+
+#POST	/anwendung/:id/mfg_suchdetails_zeigen controllers.Anwendung.suchDetailsAnzeigen(id: String)
+
+
+##############
+# THINGS - CRUD example using forms, contraints, MongoDB, twitter bootstrap
+##############
+
+# Things in Nähe suchen.( Vorsicht: die Default-Werte führen dazu, dass der Aufruf-URL nichts übergeben wird - also nicht inrequest parametern)
+
+GET /things/near controllers.Things.near(distance: Integer ?= 2000, longitude: Double ?= 8.96, latitude: Double ?= 47.6  )  
+
+
+# Things Liste anzeigen 
+GET /things      controllers.Things.list()      
+
+# neues Thing anlegen - Formular 
+GET /things/new  controllers.Things.showNew()   
+
+# neues Thing speichern
+POST /things     controllers.Things.create()     
+
+# Thing anzeigen
+GET /things/:id  controllers.Things.show(id: String)    
+
+# Thing ändern (speichern)
+POST /things/:id controllers.Things.save(id: String)     
+
+# Thing löschen (action=delete)
+POST /things/delete/:id controllers.Things.delete(id: String)   
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

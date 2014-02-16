@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>Mitfahrgelegenheit-Anmeldung</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+            <!-- Bootstrap -->
+             <link href="../stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+
+    <style type="text/css">
+      body {
+        padding-top: 50px;
+      }
+      
+      h1{
+          color: #6495ed;
+      }
+     
+    </style>
+    </head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+
+ <div class="container">
+    <div class="navbar-header">
+    	 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+         
+         <a class="navbar-brand" href="#">Anmeldung</a>
+  
+	</div>
+    
+
+<div class="collapse navbar-collapse">
+
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Kontankt</a></li>
+</ul>
+
+</div>
+</div>
+  
+</div>
+
+    <div class="container">
+
+      <div class="starter-template">
+       <h1>Bitte hier anmelden</h1>
+      </div>
+
+      <div class="row">
+
+    		<form class="form-horizontal" role="form" method="POST" action="/login">
+			  <div class="form-group">
+			    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+			    <div class="col-lg-4">
+			      <input  name="email" type="email" class="form-control" id="inputEmail1" placeholder="Email">
+			    </div>
+			  </div>
+			  
+<div class="form-group">
+			    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+			    <div class="col-lg-4">
+			      <input name="password" type="password" class="form-control" id="inputPassword1" placeholder="Password">
+			    </div>
+			  </div>
+
+			   
+               
+			  <div class="form-group">
+			    <div class="col-lg-offset-2 col-lg-5">
+                <div class="checkbox">
+                    <label>
+			          <input type="radio" name="fahrer" ><b>&nbsp;Fahrer</b>
+			        </label>
+			      </div>
+                  <div class="checkbox">
+        	        <label>
+			          <input type="radio" name="fahrer" ><b>&nbsp;Mitfahrer</b>
+			        </label>
+			      </div>
+                  
+			    
+                  <p>
+                  
+                  
+                <div class="Registrierung">
+                  <div class="col-lg-offset-0 col-lg-0">
+                    
+                    <table>
+                    <tr>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-default">Login</button>
+                    <td>&nbsp;
+                    <button type="submit" class="btn btn-dfeault">Registrieren</button>
+                    </td>
+                    </tr></table>
+                </div>
+                  
+                  
+			    </div>
+			  </div>
+			</form>
+
+      </div>
+
+    </div><!-- /.container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../javascripts/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../javascripts/bootstrap.js"></script>
+  </body>

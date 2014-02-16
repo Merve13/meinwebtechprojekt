@@ -1,0 +1,8 @@
+body {
+	background: url(../images/r.jpg) no-repeat center;
+	font-family: Helvetica, Arial, sans-serif;
+	background-attachment: fixed;
+	opacity: 0.9;
+	filter: alpha(opacity = 50);
+	-moz-opacity: 0.4;
+}
